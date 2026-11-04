@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shawn Sun</title>
+<meta name="description" content="Yuchen (Shawn) Sun: MBA student in Strategy &amp; AI at Columbia Business School, previously in data science and applied AI at BMO.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23B9D9EB'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='21' font-weight='700' text-anchor='middle' fill='%230B2A4A'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --columbia: #B9D9EB;
+    --columbia-soft: #E4F0F7;
+    --columbia-mist: #F4F9FC;
+    --ink: #0B2A4A;
+    --ink-soft: #3C5670;
+    --link: #1D4F91;
+    --line: #CFE1EC;
+    --tile: #FFFFFF;
+    --nav-h: 64px;
+    --radius: 20px;
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color-scheme: light;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--columbia-mist);
+    color: var(--ink);
+    font: 400 17px/1.6 var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, p, ul { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  a { color: var(--link); }
+  strong { font-weight: 700; color: var(--ink); }
+  :focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 6px; }
+
+  .wrap { width: min(1080px, 100%); margin-inline: auto; padding-inline: 24px; }
+
+  .skip {
+    position: absolute; left: 16px; top: -60px; z-index: 20;
+    padding: 8px 14px; border-radius: 10px;
+    background: var(--ink); color: #fff;
+  }
+  .skip:focus { top: 12px; }
+
+  /* Navigation */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255, 255, 255, .92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap {
+    display: flex; align-items: center; gap: 16px;
+    height: var(--nav-h);
+  }
+  .brand {
+    margin-right: auto;
+    font: 600 20px/1 var(--display);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav ul { display: flex; align-items: center; gap: 4px; }
+  .nav-link {
+    display: block;
+    padding: 7px 14px;
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: 15px; font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color .15s ease;
+  }
+  .nav-link:hover { background: var(--columbia-soft); }
+  .icons { display: flex; gap: 2px; }
+  .icon {
+    display: grid; place-items: center;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    color: var(--ink);
+    transition: background-color .15s ease;
+  }
+  .icon:hover { background: var(--columbia-soft); }
+  .icon svg { width: 19px; height: 19px; fill: currentColor; }
+
+  /* Hero */
+  .hero { background: var(--columbia); }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 260px);
+    align-items: center;
+    gap: 56px;
+    padding-block: 64px;
+  }
+  .eyebrow { font-size: 15px; font-weight: 700; letter-spacing: .02em; }
+  .hero h1 {
+    margin-top: 8px;
+    font: 600 clamp(46px, 7.4vw, 76px)/1.04 var(--display);
+    letter-spacing: -.02em;
+  }
+  .lede { margin-top: 20px; max-width: 34em; font-size: 19px; line-height: 1.55; }
+  .aside { margin-top: 12px; max-width: 34em; color: var(--ink); }
+  .contact { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .pill {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: var(--tile);
+    color: var(--ink);
+    font-size: 15px; font-weight: 500;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .pill:hover { background: var(--ink); color: #fff; }
+  .portrait {
+    display: block;
+    width: 100%; height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border: 6px solid var(--tile);
+    border-radius: 22px;
+    box-shadow: 0 18px 40px rgba(11, 42, 74, .16);
+  }
+
+  /* Sections */
+  section[id] { scroll-margin-top: var(--nav-h); padding-block: 64px 8px; }
+  section:last-of-type { padding-bottom: 64px; }
+  .section-head { margin-bottom: 24px; }
+  .section-head h2 {
+    font: 600 clamp(32px, 4.6vw, 42px)/1.1 var(--display);
+    letter-spacing: -.015em;
+  }
+  .section-head p { margin-top: 4px; color: var(--ink-soft); }
+
+  .grid { display: grid; gap: 16px; }
+  .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile {
+    min-width: 0;
+    padding: 24px;
+    background: var(--tile);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .tile-top {
+    display: flex; flex-wrap: wrap; justify-content: space-between;
+    gap: 0 16px;
+  }
+  .grid-2 .tile-top { display: block; }
+  .meta { color: var(--ink-soft); font-size: 15px; }
+  .org { font: 600 21px/1.25 var(--display); }
+  .tag { color: var(--ink-soft); font-size: 15px; font-style: italic; }
+  .degree { margin-top: 12px; font-weight: 700; }
+  .small { margin-top: 12px; color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
+  .small em { color: var(--ink); font-style: normal; font-weight: 500; }
+
+  /* Education tiles carry the place and dates at the foot of the tile */
+  .edu { display: flex; flex-direction: column; }
+  .edu .meta { margin-top: auto; padding-top: 14px; }
+
+  /* Experience */
+  .stack { display: grid; gap: 16px; }
+  .role {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 17px; font-weight: 400;
+  }
+  .role b { font-weight: 700; }
+  .role-plain { margin-top: 12px; font-size: 17px; font-weight: 400; }
+  .role-plain b { font-weight: 700; }
+  .theme {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 2px 12px;
+    border-radius: 12px;
+    background: var(--columbia);
+    font-size: 14px; font-weight: 500;
+  }
+  .bullets { display: grid; gap: 10px; margin-top: 12px; }
+  .bullets li {
+    position: relative;
+    padding-left: 18px;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .bullets li::before {
+    content: "";
+    position: absolute; left: 0; top: .62em;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--columbia);
+    box-shadow: 0 0 0 1px var(--link);
+  }
+
+  /* Additional information */
+  .info-title { font: 600 19px/1.3 var(--display); }
+  .info-body { margin-top: 8px; color: var(--ink-soft); font-size: 16px; line-height: 1.55; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chip {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--columbia-soft);
+    font-size: 15px;
+  }
+  .span-2 { grid-column: 1 / -1; }
+  .interests {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .interest {
+    min-width: 0;
+    padding: 16px;
+    border-radius: 14px;
+    background: var(--columbia-soft);
+  }
+  .interest .emoji { display: block; font-size: 26px; line-height: 1.2; }
+  .interest b { display: block; margin-top: 6px; font-weight: 700; }
+  .interest span:last-child { color: var(--ink-soft); font-size: 15px; line-height: 1.4; }
+
+  /* Footer */
+  footer { background: var(--columbia); }
+  footer .wrap {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 24px;
+    padding-block: 28px;
+  }
+  footer p { font: 600 20px/1.2 var(--display); }
+  footer ul { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 40px 48px; }
+    .portrait { max-width: 200px; order: -1; }
+    .hero .wrap > div { order: 2; }
+    .grid-3 { grid-template-columns: minmax(0, 1fr); }
+    .interests { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    :root { --nav-h: 56px; }
+    .wrap { padding-inline: 16px; }
+    .brand { display: none; }
+    .nav .wrap { gap: 4px; justify-content: space-between; }
+    .nav-link { padding: 6px 9px; font-size: 14px; }
+    .icon { width: 34px; height: 34px; }
+    .grid-2 { grid-template-columns: minmax(0, 1fr); }
+    .tile { padding: 20px; }
+    section[id] { padding-top: 48px; }
+  }
+  @media (max-width: 370px) {
+    .icons { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#education">Skip to content</a>
+
+<header class="nav">
+  <nav class="wrap" aria-label="Main">
+    <a class="brand" href="#top">Shawn Sun</a>
+    <ul>
+      <li><a class="nav-link" href="#education">Education</a></li>
+      <li><a class="nav-link" href="#experience">Experience</a></li>
+      <li><a class="nav-link" href="#additional">Additional Info</a></li>
+    </ul>
+    <div class="icons">
+      <a class="icon" href="https://www.linkedin.com/in/shawn-sun/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+      <a class="icon" href="https://github.com/shawn-y-sun" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3"/></svg>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Yuchen (Shawn) Sun</p>
+        <h1>Hi, I'm Shawn.</h1>
+        <p class="lede">I'm an MBA student in Strategy &amp; AI at Columbia Business School. Before this, I spent four years at BMO building forecasting models, analytics products and AI-agent workflows.</p>
+        <p class="aside">Off the clock: snowboarding, Formula 1, golf and a lot of Real Madrid.</p>
+        <ul class="contact">
+          <li><a class="pill" href="mailto:ysun28@gsb.columbia.edu">ysun28@gsb.columbia.edu</a></li>
+          <li><a class="pill" href="https://www.linkedin.com/in/shawn-sun/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a class="pill" href="https://github.com/shawn-y-sun" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <img class="portrait" src="photo-web.jpg" width="960" height="1200" alt="Portrait of Shawn Sun in a black sweatshirt against a pale blue backdrop">
+    </div>
+  </div>
+
+  <section id="education" aria-labelledby="education-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="education-h">Education</h2>
+        <p>Three schools, two countries.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="tile edu">
+          <h3 class="org">Columbia Business School</h3>
+          <p class="degree">MBA, Strategy &amp; AI, May 2028</p>
+          <p class="small"><em>Membership:</em> Management Consulting Association, Tech Club, AI Club, Greater China Society (AVP), Golf Club</p>
+          <p class="meta">New York, US · 2026-2028</p>
+        </article>
+        <article class="tile edu">
+          <h3 class="org">University of Toronto</h3>
+          <p class="degree">Master of Quantitative Financial Risk, June 2022</p>
+          <p class="small"><em>Leadership:</em> Class Representative of Community</p>
+          <p class="meta">Toronto, Canada · 2021-2022</p>
+        </article>
+        <article class="tile edu">
+          <h3 class="org">University of Waterloo</h3>
+          <p class="degree">Bachelor of Mathematics, Finance, April 2020</p>
+          <p class="small"><em>Honors &amp; Leadership:</em> Graduated with Distinction, VP of UW Ski Club</p>
+          <p class="meta">Waterloo, Canada · 2015-2020</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="experience-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="experience-h">Experience</h2>
+        <p>Mostly banks, models and getting people to actually use them.</p>
+      </div>
+      <div class="stack">
+        <article class="tile">
+          <div class="tile-top">
+            <h3 class="org">Bank of Montreal (BMO)</h3>
+            <p class="meta">Toronto, Canada · 2022-2026</p>
+          </div>
+          <p class="tag">Top 3 Bank in Canada</p>
+
+          <h4 class="role"><b>Applied AI Engineer (Acting)</b> (2026), <b>Manager, Data Science</b> (2023-2026)</h4>
+          <div class="grid grid-2">
+            <div>
+              <p class="theme">Workflow &amp; AI Transformation</p>
+              <ul class="bullets">
+                <li>Built a Python toolkit that automates forecasting model development for risk and profitability decisions; adopted by <strong>25 analysts</strong> across <strong>10+ projects</strong> a year, saving <strong>~700 analyst-hours</strong> annually</li>
+                <li>Pioneered an AI-agent workflow that builds forecasting models autonomously, evaluating all <strong>~50 candidates</strong> and speeding development <strong>up to 5x</strong> while reducing model compliance risk in pilots</li>
+              </ul>
+            </div>
+            <div>
+              <p class="theme">Analytics Product Development &amp; Management</p>
+              <ul class="bullets">
+                <li>Led development and launch of an analytics platform for <strong>150+ commercial bankers</strong>; secured a <strong>$1M budget</strong> and won an <strong>industry innovation award</strong></li>
+                <li>Led 2 analysts to <strong>triple users</strong> and lift active usage from <strong>~20% to ~50%</strong> with self-serve onboarding, automated access requests and team-run support</li>
+                <li>Coordinated 3 teams to integrate siloed data sources, helping bankers optimize key corporate clients' interest earnings and driving active usage to <strong>70%+</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <h4 class="role"><b>Data Scientist</b> (2022-2023)</h4>
+          <ul class="bullets">
+            <li>Developed forecasting models across <strong>7 products</strong> for risk hedging and stress testing on multi-billion-dollar loan and deposit portfolios, improving accuracy by <strong>~30%</strong> on average</li>
+            <li>Promoted to Manager in <strong>~10 months</strong>, the fastest in team history; earned the team's <strong>top performance rating</strong> in 2024 and 2025</li>
+          </ul>
+        </article>
+
+        <div class="grid grid-2">
+          <article class="tile">
+            <div class="tile-top">
+              <h3 class="org">Royal Bank of Canada (RBC)</h3>
+              <p class="meta">Toronto, Canada · 2022</p>
+            </div>
+            <h4 class="role-plain"><b>Deep Learning Research Intern</b></h4>
+            <ul class="bullets">
+              <li>Improved an early-stage LLM designed to screen <strong>~5M documents</strong> for hidden credit risk concentrations by building an automated pipeline that expanded the training set by <strong>~20%</strong></li>
+            </ul>
+          </article>
+          <article class="tile">
+            <div class="tile-top">
+              <h3 class="org">Accenture Strategy</h3>
+              <p class="meta">Shanghai, China · 2019</p>
+            </div>
+            <h4 class="role-plain"><b>Strategy Consulting Intern</b></h4>
+            <ul class="bullets">
+              <li>Helped deliver a sales-channel strategy for a <strong>Fortune 50</strong> oil &amp; gas client's lubricants business to reach China's <strong>~30M truck drivers</strong> through digital platforms; earned the PM's endorsement for full-time opportunity</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="additional" aria-labelledby="additional-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="additional-h">Additional Information</h2>
+        <p>The rest of the story, including the fun part.</p>
+      </div>
+      <div class="grid grid-2">
+        <article class="tile">
+          <h3 class="info-title">Volunteer Work</h3>
+          <p class="info-body"><strong>Ice Condo, Board Officer, 2022-2024.</strong> Championed an Airbnb partnership generating <strong>$1M+ annually</strong> for maintenance and security at Canada's largest condo (<strong>1,350 units</strong>) by mobilizing <strong>~70 owners</strong></p>
+        </article>
+        <article class="tile">
+          <h3 class="info-title">Certifications</h3>
+          <ul class="chips">
+            <li class="chip">CFA Level 1</li>
+            <li class="chip">FRM Part 1</li>
+            <li class="chip">Certified Tableau Specialist</li>
+            <li class="chip">Deep Learning Specialization (DeepLearning.AI)</li>
+          </ul>
+        </article>
+        <article class="tile span-2">
+          <h3 class="info-title">Interests</h3>
+          <ul class="interests">
+            <li class="interest"><span class="emoji" aria-hidden="true">🏂</span><b>Snowboarding</b><span>CASI Instructor</span></li>
+            <li class="interest"><span class="emoji" aria-hidden="true">🏎️</span><b>Formula 1</b><span>Proud Tifosi</span></li>
+            <li class="interest"><span class="emoji" aria-hidden="true">⛳</span><b>Golf</b><span>7.9 HCP, only on Trackman</span></li>
+            <li class="interest"><span class="emoji" aria-hidden="true">⚽</span><b>Real Madrid</b><span>20-year Real Madrid Fan</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Say hi.</p>
+    <ul>
+      <li><a class="pill" href="mailto:ysun28@gsb.columbia.edu">Email</a></li>
+      <li><a class="pill" href="https://www.linkedin.com/in/shawn-sun/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a class="pill" href="https://github.com/shawn-y-sun" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

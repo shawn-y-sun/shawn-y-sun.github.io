@@ -1,0 +1,8 @@
+# Never publish (see AGENTS.md)
+private/
+
+# Raw source files: the CV holds the phone number, grades and work authorization
+Sun_Shawn_Resume.pdf
+photo.JPG
+
+.DS_Store
